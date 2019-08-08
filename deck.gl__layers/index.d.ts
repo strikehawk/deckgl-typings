@@ -942,7 +942,7 @@ declare module '@deck.gl/layers' {
 	export { default as GeoJsonLayer } from '@deck.gl/layers/geojson-layer/geojson-layer';
 	export { default as TextLayer } from '@deck.gl/layers/text-layer/text-layer';
 	export { default as ContourLayer } from '@deck.gl/layers/contour-layer/contour-layer';
-	export { default as _SolidPolygonLayer } from '@deck.gl/layers/solid-polygon-layer/solid-polygon-layer';
+	export { default as SolidPolygonLayer } from '@deck.gl/layers/solid-polygon-layer/solid-polygon-layer';
 	export { default as _MultiIconLayer } from '@deck.gl/layers/text-layer/multi-icon-layer/multi-icon-layer';
 
 }

@@ -61,6 +61,7 @@ declare module 'deck.gl' {
 		HexagonCellLayer,
 		PathLayer,
 		PolygonLayer,
+		SolidPolygonLayer,
 		GeoJsonLayer,
 		TextLayer
 	} from '@deck.gl/layers';
