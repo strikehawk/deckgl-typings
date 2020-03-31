@@ -11,7 +11,7 @@ declare module '@luma.gl/webgl/utils/is-browser' {
 
 }
 declare module '@luma.gl/webgl/utils/globals' {
-	const self_: (Window & typeof globalThis) | NodeJS.Global; const window_: (Window & typeof globalThis) | NodeJS.Global; const global_: (Window & typeof globalThis) | NodeJS.Global; const document_: {};
+	const self_: (typeof Window) | NodeJS.Global; const window_: (typeof Window) | NodeJS.Global; const global_: (typeof Window) | NodeJS.Global; const document_: {};
 	export { self_ as self, window_ as window, global_ as global, document_ as document };
 
 }
