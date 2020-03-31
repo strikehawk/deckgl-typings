@@ -969,6 +969,11 @@ declare module '@deck.gl/core/lib/layer' {
 		wrapLongitude?: boolean;
 		id?: string;
 		data?: DataSet<D> | Promise<DataSet<D>> | string;
+		dataComparator?: (newData: any, oldData: any) => boolean;
+		dataTransform?: (data: any, previousData: any) => void;
+		_dataDiff?: (newData: any, oldData: any) => { startRow: number, endRow: number };
+		updateTriggers?: { [accessorProp: string] : string | string[] };
+		onDataLoad?: (value: any, context: {layer: Layer<D> }) => void;
 		visible?: boolean;
 		opacity?: number;
 		transitions?: { [attributeGetter: string]: TransitionTiming };
@@ -985,7 +990,11 @@ declare module '@deck.gl/core/lib/layer' {
 		positionFormat?: 'XYZ' | 'XY';
 		colorFormat?: 'RGBA' | 'RGB';
 		numInstances?: number;
+		parameters?: { [parameter: string] : any };
+		getPolygonOffset?: (layerIndex: number) => [number, number];
+		extensions?: any[]
 	}
+
 	export default class Layer<D> extends Component {
 		constructor(props: LayerProps<D>);
 		toString(): string;
