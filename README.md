@@ -1,5 +1,5 @@
 # deckgl-typings
-TypeScript declaration files for deck.gl
+TypeScript declaration files for [deck.gl](https://deck.gl/#/documentation/)
 
 This is a work in progress - see the [issues list](https://github.com/danmarshall/deckgl-typings/issues)
 
@@ -15,3 +15,4 @@ These will automatically appear in your projects `node_modules/@types` folder, t
 |-----------------|------------------------|
 | 5.x.x           | 1.x.x                  |
 | 6.x.x           | 2.x.x                  |
+| 7.x.x           | 3.x.x                  |
