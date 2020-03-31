@@ -1,7 +1,7 @@
 //typings for @deck.gl/core v7.3.3
 declare module '@deck.gl/core/utils/globals' {
 	/// <reference types="@types/node" />
-	export const isBrowser: any; const window_: (Window & typeof globalThis) | NodeJS.Global; const global_: (Window & typeof globalThis) | NodeJS.Global; const document_: {};
+	export const isBrowser: any; const window_: (typeof Window) | NodeJS.Global; const global_: (typeof Window) | NodeJS.Global; const document_: {};
 	export { window_ as window, global_ as global, document_ as document };
 
 }
@@ -1126,6 +1126,12 @@ declare module '@deck.gl/core/lib/composite-layer' {
 
 }
 declare module '@deck.gl/core/viewports/viewport' {
+	export const PROJECTION_MODE: {
+		WEB_MERCATOR: number;
+		WEB_MERCATOR_AUTO_OFFSET: number;
+		IDENTITY: number;
+	};
+
 	export default class Viewport {
 		/**
 		* @classdesc
@@ -1135,6 +1141,10 @@ declare module '@deck.gl/core/viewports/viewport' {
 		* A new viewport instance should be created if any parameters have changed.
 		*/
 		constructor(opts?: {});
+
+		metersPerPixel: number;
+		projectionMode: number;
+
 		equals(viewport: any): any;
 		/**
 		* Projects xyz (possibly latitude and longitude) to pixel coordinates in window
