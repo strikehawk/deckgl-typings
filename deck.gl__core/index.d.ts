@@ -105,6 +105,11 @@ declare module '@deck.gl/core/shaderlib/project/viewport-uniforms' {
 	}): any;
 
 }
+declare module '@deck.gl/core/shaderlib/picking/picking' {
+	const _default: Object;
+	export default _default;
+
+}
 declare module '@deck.gl/core/shaderlib/project/project' {
 	function getUniforms(opts?: {}): any; const _default: {
 		name: string;
@@ -173,11 +178,12 @@ declare module '@deck.gl/core/shaderlib/shadow/shadow' {
 declare module 'shaderlib' {
 	import { picking, gouraudlighting, phonglighting } from '@luma.gl/core';
 	import project from '@deck.gl/core/shaderlib/project/project';
+	import project32 from '@deck.gl/core/shaderlib/project32/project32';
 	import project64 from '@deck.gl/core/shaderlib/project64/project64';
 	import shadow from '@deck.gl/core/shaderlib/shadow/shadow';
 	export function initializeShaderModules(): void;
 	export function createProgramManager(gl: any): any;
-	export { picking, project, project64, gouraudlighting, phonglighting, shadow };
+	export { picking, project, project32, project64, gouraudlighting, phonglighting, shadow };
 
 }
 declare module '@deck.gl/core/lib/init' {
@@ -2440,7 +2446,9 @@ declare module '@deck.gl/core' {
 	export { default as DeckRenderer } from '@deck.gl/core/lib/deck-renderer';
 	export { default as Viewport } from '@deck.gl/core/viewports/viewport';
 	export { default as WebMercatorViewport } from '@deck.gl/core/viewports/web-mercator-viewport';
+	export { default as picking } from '@deck.gl/core/shaderlib/picking/picking';
 	export { default as project } from '@deck.gl/core/shaderlib/project/project';
+	export { default as project32 } from '@deck.gl/core/shaderlib/project32/project32';
 	export { default as project64 } from '@deck.gl/core/shaderlib/project64/project64';
 	export { default as View } from '@deck.gl/core/views/view';
 	export { default as MapView } from '@deck.gl/core/views/map-view';
