@@ -884,7 +884,7 @@ declare module '@deck.gl/core/lifecycle/component-state' {
 
 }
 declare module '@deck.gl/core/lifecycle/component' {
-	import ShaderCache from '@luma.gl/core/lib/shader-cache';
+	import { LayerManagerContext } from '@deck.gl/core/lib/layer-manager';
 
 	export default class Component {
 		constructor();
@@ -917,7 +917,7 @@ declare module '@deck.gl/core/lifecycle/component' {
 		/**	
 		* Will reference layer manager's context, contains state shared by layers	
 		*/
-		context: { gl: WebGLRenderingContext, shaderCache: ShaderCache };
+		context: LayerManagerContext;
 
 		/**	
 		* Will be set to the shared layer state object during layer matching	
@@ -997,6 +997,7 @@ declare module '@deck.gl/core/lib/layer' {
 		}): boolean;
 		needsUpdate(): any;
 		hasUniformTransition(): any;
+		isLoaded: boolean;
 		isPickable(): any;
 		getModels(): any;
 		getSingleModel(): any;
@@ -1218,6 +1219,19 @@ declare module '@deck.gl/core/viewports/viewport' {
 
 }
 declare module '@deck.gl/core/lib/layer-manager' {
+	import ShaderCache from "@luma.gl/core/lib/shader-cache";
+	import Deck from '@deck.gl/core/lib/deck';
+	import Viewport from '@deck.gl/core/viewports/viewport';
+	export interface LayerManagerContext {
+		deck: Deck;
+		gl: WebGLRenderingContext;
+		programManager?: any;
+		shaderCache: ShaderCache
+		stats: any;
+		viewport?: Viewport;
+		timeline?: any;
+	}
+
 	export default class LayerManager {
 		constructor(gl: any, { deck, stats, viewport, timeline }?: {
 			deck: any;
