@@ -945,6 +945,7 @@ declare module '@deck.gl/core/lib/layer' {
 	import { PickInfo } from '@deck.gl/core/lib/deck';
 	import * as hammerjs from 'hammerjs';
 	import { RGBAColor } from "@deck.gl/aggregation-layers/utils/color-utils";
+	import { LayerManagerContext } from '@deck.gl/core/lib/layer-manager';
 	export interface TransitionTiming {
 		duration?: number;
 		easing?: (t: number) => number;
@@ -995,6 +996,16 @@ declare module '@deck.gl/core/lib/layer' {
 		extensions?: any[]
 	}
 
+	export interface ChangeFlags {
+		dataChanged?: boolean;
+		propsChanged?: boolean;
+		viewportChanged?: boolean;
+		somethingChanged?: boolean;
+		propsOrDataChanged?: boolean;
+		stateChanged?: boolean;
+		updateTriggersChanged?: boolean;
+	}
+
 	export default class Layer<D> extends Component {
 		constructor(props: LayerProps<D>);
 		toString(): string;
@@ -1004,21 +1015,22 @@ declare module '@deck.gl/core/lib/layer' {
 		getNeedsRedraw(opts?: {
 			clearRedrawFlags: boolean;
 		}): boolean;
-		needsUpdate(): any;
+		needsUpdate(): boolean;
 		hasUniformTransition(): any;
 		isLoaded: boolean;
-		isPickable(): any;
+		isPickable(): boolean;
 		getModels(): any;
 		getSingleModel(): any;
 		getAttributeManager(): any;
 		getCurrentLayer(): any;
 		getLoadOptions(): any;
 		getFirstObject(): any;
-		project(xyz: any): any[];
-		unproject(xy: any): any;
-		projectPosition(xyz: any): any;
-		projectFlat(lngLat: any): any;
-		unprojectFlat(xy: any): any;
+		project(xyz: [number, number, number?], opts?: { topLeft?: boolean }): [number, number, number?];
+		unproject(xy: [number, number, number?], opts?: { topLeft?: boolean, targetZ?: number }): [number, number, number?];
+		projectPosition(xyz: [number, number, number?]): [number, number, number];
+		unprojectPosition(xyz: [number, number, number?]): [number, number, number];
+		projectFlat(lngLat: [number, number, number?]): [number, number, number?];
+		unprojectFlat(xy: [number, number, number?]): [number, number, number?];
 		use64bitPositions(): boolean;
 		onHover(info: any, pickingEvent: any): any;
 		onClick(info: any, pickingEvent: any): any;
@@ -1028,16 +1040,16 @@ declare module '@deck.gl/core/lib/layer' {
 		initializeState(): void;
 		getShaders(shaders: any): any;
 		shouldUpdateState({ oldProps, props, context, changeFlags }: {
-			oldProps: any;
-			props: any;
-			context: any;
-			changeFlags: any;
-		}): any;
+			oldProps: LayerProps<D>;
+			props: LayerProps<D>;
+			context: LayerManagerContext;
+			changeFlags: ChangeFlags;
+		}): boolean;
 		updateState({ oldProps, props, context, changeFlags }: {
-			oldProps: any;
-			props: any;
-			context: any;
-			changeFlags: any;
+			oldProps: LayerProps<D>;
+			props: LayerProps<D>;
+			context: LayerManagerContext;
+			changeFlags: ChangeFlags;
 		}): void;
 		finalizeState(): void;
 		draw(opts: any): void;
@@ -1058,8 +1070,8 @@ declare module '@deck.gl/core/lib/layer' {
 		_setModelAttributes(model: any, changedAttributes: any): void;
 		clearPickingColor(color: any): void;
 		restorePickingColors(): void;
-		getNumInstances(props: any): any;
-		getBufferLayout(props: any): any;
+		getNumInstances(props: LayerProps<D>): any;
+		getBufferLayout(props: LayerProps<D>): any;
 		_initialize(): void;
 		_update(): void;
 		_updateState(): void;
@@ -1070,18 +1082,18 @@ declare module '@deck.gl/core/lib/layer' {
 			parameters?: {};
 		}): void;
 		pickLayer(opts: any): any;
-		getChangeFlags(): any;
+		getChangeFlags(): ChangeFlags;
 		setChangeFlags(flags: any): void;
 		clearChangeFlags(): void;
 		printChangeFlags(): string;
-		diffProps(newProps: any, oldProps: any): void;
+		diffProps(newProps: LayerProps<D>, oldProps: LayerProps<D>): void;
 		validateProps(): void;
 		setModuleParameters(moduleParameters: any): void;
 		_getUpdateParams(): {
-			props: any;
-			oldProps: any;
+			props: LayerProps<D>;
+			oldProps: LayerProps<D>;
 			context: any;
-			changeFlags: any;
+			changeFlags: ChangeFlags;
 		};
 		_getNeedsRedraw(opts: any): boolean;
 		_getAttributeManager(): AttributeManager;
