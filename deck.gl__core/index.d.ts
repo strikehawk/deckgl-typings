@@ -1163,6 +1163,8 @@ declare module '@deck.gl/core/viewports/viewport' {
 		*/
 		constructor(opts?: {});
 
+		zoom: number;
+		isGeospatial: boolean;
 		metersPerPixel: number;
 		projectionMode: number;
 
@@ -1222,8 +1224,8 @@ declare module '@deck.gl/core/viewports/viewport' {
 			modelMatrix?: any;
 		}): any;
 		containsPixel({ x, y, width, height }: {
-			x: any;
-			y: any;
+			x: number;
+			y: number;
 			width?: number;
 			height?: number;
 		}): boolean;
@@ -1232,17 +1234,17 @@ declare module '@deck.gl/core/viewports/viewport' {
 		getCameraDirection(): any;
 		getCameraUp(): any;
 		_createProjectionMatrix({ orthographic, fovyRadians, aspect, focalDistance, near, far }: {
-			orthographic: any;
-			fovyRadians: any;
-			aspect: any;
-			focalDistance: any;
-			near: any;
-			far: any;
+			orthographic: boolean;
+			fovyRadians: number;
+			aspect: number;
+			focalDistance: number;
+			near: number;
+			far: number;
 		}): any;
 		_initViewMatrix(opts: any): void;
 		_getCenterInWorld({ longitude, latitude }: {
-			longitude: any;
-			latitude: any;
+			longitude: number;
+			latitude: number;
 		}): any;
 		_initProjectionMatrix(opts: any): void;
 		_initPixelMatrices(): void;
