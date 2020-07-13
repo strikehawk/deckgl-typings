@@ -1,29 +1,31 @@
 //typings for @luma.gl/webgl-state-tracker v7.3.2
-declare module '@luma.gl/webgl-state-tracker/utils/assert' {
+declare module "@luma.gl/webgl-state-tracker/utils/assert" {
 	export default function assert(condition: any, message: any): void;
-
 }
-declare module '@luma.gl/webgl-state-tracker/utils/deep-array-equal' {
+declare module "@luma.gl/webgl-state-tracker/utils/deep-array-equal" {
 	export default function deepArrayEqual(x: any, y: any): boolean;
-
 }
-declare module '@luma.gl/webgl-state-tracker/utils/utils' {
+declare module "@luma.gl/webgl-state-tracker/utils/utils" {
 	export function isObjectEmpty(object: any): boolean;
 	export function isWebGL2(gl: any): boolean;
-
 }
-declare module 'utils' {
-	//export { default as assert } from '@luma.gl/webgl-state-tracker/utils/assert';
-	export { default as deepArrayEqual } from '@luma.gl/webgl-state-tracker/utils/deep-array-equal';
-	export { isWebGL2 /*, isObjectEmpty*/ } from '@luma.gl/webgl-state-tracker/utils/utils';
-
+declare module "utils" {
+	export { default as assert } from "@luma.gl/webgl-state-tracker/utils/assert";
+	export { default as deepArrayEqual } from "@luma.gl/webgl-state-tracker/utils/deep-array-equal";
+	export {
+		isWebGL2,
+		isObjectEmpty,
+	} from "@luma.gl/webgl-state-tracker/utils/utils";
 }
-declare module '@luma.gl/webgl-state-tracker/unified-parameter-api/webgl-parameter-tables' {
+declare module "@luma.gl/webgl-state-tracker/unified-parameter-api/webgl-parameter-tables" {
 	export const GL_PARAMETER_DEFAULTS: {
 		[x: number]: any;
 	};
 	export const GL_PARAMETER_SETTERS: {
-		[x: number]: string | ((gl: any, value: any, key: any) => any);
+		[x: number]:
+		| string
+		| ((gl: any, value: any, key: any) => any)
+		| ((gl: any, value: any) => any);
 	};
 	export const GL_COMPOSITE_PARAMETER_SETTERS: {
 		blendEquation: (gl: any, values: any) => any;
@@ -38,21 +40,21 @@ declare module '@luma.gl/webgl-state-tracker/unified-parameter-api/webgl-paramet
 	export const GL_PARAMETER_GETTERS: {
 		[x: number]: (gl: any, key: any) => any;
 	};
-
 }
-declare module '@luma.gl/webgl-state-tracker/unified-parameter-api/unified-parameter-api' {
+declare module "@luma.gl/webgl-state-tracker/unified-parameter-api/unified-parameter-api" {
 	export function setParameter(gl: any, key: any, value: any): any;
 	export function setParameters(gl: any, values: any): void;
 	export function getParameter(gl: any, key: any): any;
 	export function getParameters(gl: any, parameters: any): {};
-	export function getDefaultParameters(gl: any): {
+	export function getDefaultParameters(
+		gl: any
+	): {
 		[x: number]: any;
 	};
 	export function resetParameters(gl: any): void;
 	export function getModifiedParameters(gl: any): {};
-
 }
-declare module '@luma.gl/webgl-state-tracker/unified-parameter-api/webgl-setter-function-table' {
+declare module "@luma.gl/webgl-state-tracker/unified-parameter-api/webgl-setter-function-table" {
 	const _default: {
 		framebuffer: (gl: any, framebuffer: any) => any;
 		blend: (gl: any, value: any) => any;
@@ -86,13 +88,11 @@ declare module '@luma.gl/webgl-state-tracker/unified-parameter-api/webgl-setter-
 		viewport: (gl: any, value: any) => any;
 	};
 	export default _default;
-
 }
-declare module '@luma.gl/webgl-state-tracker/unified-parameter-api/set-parameters' {
+declare module "@luma.gl/webgl-state-tracker/unified-parameter-api/set-parameters" {
 	export function setParameters(gl: any, parameters: any): void;
-
 }
-declare module '@luma.gl/webgl-state-tracker/state-tracking/webgl-function-to-parameters-table' {
+declare module "@luma.gl/webgl-state-tracker/state-tracking/webgl-function-to-parameters-table" {
 	const _default: {
 		enable: (update: any, capability: any) => any;
 		disable: (update: any, capability: any) => any;
@@ -103,7 +103,13 @@ declare module '@luma.gl/webgl-state-tracker/state-tracking/webgl-function-to-pa
 		blendEquation: (update: any, mode: any) => any;
 		blendEquationSeparate: (update: any, modeRGB: any, modeAlpha: any) => any;
 		blendFunc: (update: any, src: any, dst: any) => any;
-		blendFuncSeparate: (update: any, srcRGB: any, dstRGB: any, srcAlpha: any, dstAlpha: any) => any;
+		blendFuncSeparate: (
+			update: any,
+			srcRGB: any,
+			dstRGB: any,
+			srcAlpha: any,
+			dstAlpha: any
+		) => any;
 		clearColor: (update: any, r: any, g: any, b: any, a: any) => any;
 		clearDepth: (update: any, depth: any) => any;
 		clearStencil: (update: any, s: any) => any;
@@ -120,41 +126,69 @@ declare module '@luma.gl/webgl-state-tracker/state-tracking/webgl-function-to-pa
 		stencilMask: (update: any, mask: any) => any;
 		stencilMaskSeparate: (update: any, face: any, mask: any) => any;
 		stencilFunc: (update: any, func: any, ref: any, mask: any) => any;
-		stencilFuncSeparate: (update: any, face: any, func: any, ref: any, mask: any) => any;
+		stencilFuncSeparate: (
+			update: any,
+			face: any,
+			func: any,
+			ref: any,
+			mask: any
+		) => any;
 		stencilOp: (update: any, fail: any, zfail: any, zpass: any) => any;
-		stencilOpSeparate: (update: any, face: any, fail: any, zfail: any, zpass: any) => any;
+		stencilOpSeparate: (
+			update: any,
+			face: any,
+			fail: any,
+			zfail: any,
+			zpass: any
+		) => any;
 		viewport: (update: any, x: any, y: any, width: any, height: any) => any;
 	};
 	export default _default;
-
 }
-declare module '@luma.gl/webgl-state-tracker/state-tracking/track-context-state' {
+declare module "@luma.gl/webgl-state-tracker/state-tracking/track-context-state" {
 	/**
 	 * Initialize WebGL state caching on a context
 	 * can be called multiple times to enable/disable
 	 * @param {WebGLRenderingContext} - context
 	 */
-	export default function trackContextState(gl: any, { enable, copyState }?: {
-		enable?: boolean;
-		copyState: any;
-	}): any;
+	export default function trackContextState(
+		gl: any,
+		{
+			enable,
+			copyState,
+		}?: {
+			enable?: boolean;
+			copyState: any;
+		}
+	): any;
 	export function pushContextState(gl: any): void;
 	export function popContextState(gl: any): void;
-
 }
-declare module '@luma.gl/webgl-state-tracker/state-tracking/with-parameters' {
+declare module "@luma.gl/webgl-state-tracker/state-tracking/with-parameters" {
 	export function withParameters(gl: any, parameters: any, func: any): any;
-
 }
-declare module '@luma.gl/webgl-state-tracker' {
-	export { getParameter, getParameters, setParameter, resetParameters, getModifiedParameters } from '@luma.gl/webgl-state-tracker/unified-parameter-api/unified-parameter-api';
-	export { setParameters } from '@luma.gl/webgl-state-tracker/unified-parameter-api/set-parameters';
-	export { default, default as trackContextState, pushContextState, popContextState } from '@luma.gl/webgl-state-tracker/state-tracking/track-context-state';
-	export { withParameters } from '@luma.gl/webgl-state-tracker/state-tracking/with-parameters';
-
+declare module "@luma.gl/webgl-state-tracker" {
+	export {
+		getParameter,
+		getParameters,
+		setParameter,
+		resetParameters,
+		getModifiedParameters,
+	} from "@luma.gl/webgl-state-tracker/unified-parameter-api/unified-parameter-api";
+	export { setParameters } from "@luma.gl/webgl-state-tracker/unified-parameter-api/set-parameters";
+	export {
+		default,
+		default as trackContextState,
+		pushContextState,
+		popContextState,
+	} from "@luma.gl/webgl-state-tracker/state-tracking/track-context-state";
+	export { withParameters } from "@luma.gl/webgl-state-tracker/state-tracking/with-parameters";
 }
-declare module 'state-tracking' {
-	export { default as trackContextState, pushContextState, popContextState } from '@luma.gl/webgl-state-tracker/state-tracking/track-context-state';
-	export { withParameters } from '@luma.gl/webgl-state-tracker/state-tracking/with-parameters';
-
+declare module "state-tracking" {
+	export {
+		default as trackContextState,
+		pushContextState,
+		popContextState,
+	} from "@luma.gl/webgl-state-tracker/state-tracking/track-context-state";
+	export { withParameters } from "@luma.gl/webgl-state-tracker/state-tracking/with-parameters";
 }

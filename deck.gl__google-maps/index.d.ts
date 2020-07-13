@@ -1,5 +1,5 @@
-//typings for @deck.gl/google-maps v7.3.3
-declare module '@deck.gl/google-maps/utils' {
+//typings for @deck.gl/google-maps v8.1.3
+declare module "@deck.gl/google-maps/utils" {
 	/**
 	 * Get a new deck instance
 	 * @param map (google.maps.Map) - The parent Map instance
@@ -17,7 +17,10 @@ declare module '@deck.gl/google-maps/utils' {
 	 * @param map (google.maps.Map) - The parent Map instance
 	 * @param overlay (google.maps.OverlayView) - A maps Overlay instance
 	 */
-	export function getViewState(map: any, overlay: any): {
+	export function getViewState(
+		map: any,
+		overlay: any
+	): {
 		width: any;
 		height: any;
 		left: any;
@@ -27,9 +30,8 @@ declare module '@deck.gl/google-maps/utils' {
 		latitude: any;
 		longitude: any;
 	};
-
 }
-declare module '@deck.gl/google-maps/google-maps-overlay' {
+declare module "@deck.gl/google-maps/google-maps-overlay" {
 	export default class GoogleMapsOverlay {
 		constructor(props: any);
 		setMap(map: any): void;
@@ -42,9 +44,7 @@ declare module '@deck.gl/google-maps/google-maps-overlay' {
 		_onRemove(): void;
 		_draw(): void;
 	}
-
 }
-declare module '@deck.gl/google-maps' {
-	export { default as GoogleMapsOverlay } from '@deck.gl/google-maps/google-maps-overlay';
-
+declare module "@deck.gl/google-maps" {
+	export { default as GoogleMapsOverlay } from "@deck.gl/google-maps/google-maps-overlay";
 }
