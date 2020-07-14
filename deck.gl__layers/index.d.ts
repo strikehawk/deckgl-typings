@@ -165,7 +165,7 @@ declare module "@deck.gl/layers/icon-layer/icon-manager" {
 			data: any;
 			getIcon: any;
 		}): void;
-		get isLoaded(): boolean;
+		readonly isLoaded: boolean;
 		_updateIconAtlas(iconAtlas: any): void;
 		_updateAutoPacking(data: any): void;
 		_loadIcons(icons: any): void;
@@ -244,7 +244,7 @@ declare module "@deck.gl/layers/icon-layer/icon-layer" {
 			props: IconLayerProps<D>;
 			changeFlags: any;
 		}): void;
-		get isLoaded(): any;
+		readonly isLoaded: any;
 		finalizeState(): void;
 		draw({ uniforms }: { uniforms: any }): void;
 		_getModel(gl: any): any;
@@ -957,9 +957,9 @@ declare module "@deck.gl/layers/text-layer/font-atlas-manager" {
 	export default class FontAtlasManager {
 		constructor(gl: any);
 		finalize(): void;
-		get texture(): any;
-		get mapping(): any;
-		get scale(): number;
+		readonly texture: any;
+		readonly mapping: any;
+		readonly scale: number;
 		setProps(props?: {}): void;
 		_updateTexture({
 			data: canvas,

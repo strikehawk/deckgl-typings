@@ -389,7 +389,7 @@ declare module "@deck.gl/core/shaderlib/project/project-functions" {
 declare module "@deck.gl/core/lib/attribute/shader-attribute" {
 	export default class ShaderAttribute {
 		constructor(dataColumn: any, opts: any);
-		get value(): any;
+		readonly value: any;
 		getValue(): any;
 		getAccessor(): any;
 	}
@@ -512,8 +512,8 @@ declare module "@deck.gl/core/utils/math-utils" {
 declare module "@deck.gl/core/lib/attribute/data-column" {
 	export default class DataColumn {
 		constructor(gl: any, opts: any);
-		get buffer(): any;
-		get byteOffset(): number;
+		readonly buffer: any;
+		readonly byteOffset: number;
 		delete(): void;
 		getShaderAttributes(id: any, options: any): {};
 		getBuffer(): any;
@@ -656,8 +656,7 @@ declare module "@deck.gl/core/lib/attribute/attribute" {
 	import DataColumn from "@deck.gl/core/lib/attribute/data-column";
 	export default class Attribute extends DataColumn {
 		constructor(gl: any, opts?: {});
-		get startIndices(): any;
-		set startIndices(layout: any);
+		startIndices: any;
 		needsUpdate(): any;
 		needsRedraw({ clearChangedFlags }?: { clearChangedFlags?: boolean }): any;
 		getUpdateTriggers(): any[];
@@ -710,7 +709,7 @@ declare module "@deck.gl/core/transitions/transition" {
 		 * @params timeline {Timeline}
 		 */
 		constructor(timeline: any);
-		get inProgress(): any;
+		readonly inProgress: any;
 		/**
 		 * (re)start this transition.
 		 * @params props {object} - optional overriding props. see constructor
@@ -742,7 +741,7 @@ declare module "@deck.gl/core/transitions/gpu-interpolation-transition" {
 			attribute: any;
 			timeline: any;
 		});
-		get inProgress(): any;
+		readonly inProgress: any;
 		start(transitionSettings: any, numInstances: any): void;
 		update(): any;
 		cancel(): void;
@@ -759,7 +758,7 @@ declare module "@deck.gl/core/transitions/gpu-spring-transition" {
 			attribute: any;
 			timeline: any;
 		});
-		get inProgress(): any;
+		readonly inProgress: any;
 		start(transitionSettings: any, numInstances: any): void;
 		update(): boolean;
 		cancel(): void;
@@ -892,21 +891,21 @@ declare module "@deck.gl/core/lib/attribute/attribute-manager" {
 declare module "@deck.gl/core/transitions/cpu-interpolation-transition" {
 	import Transition from "@deck.gl/core/transitions/transition";
 	export default class CPUInterpolationTransition extends Transition {
-		get value(): any;
+		readonly value: any;
 		_onUpdate(): void;
 	}
 }
 declare module "@deck.gl/core/transitions/cpu-spring-transition" {
 	import Transition from "@deck.gl/core/transitions/transition";
 	export default class CPUSpringTransition extends Transition {
-		get value(): any;
+		readonly value: any;
 		_onUpdate(): void;
 	}
 }
 declare module "@deck.gl/core/lib/uniform-transition-manager" {
 	export default class UniformTransitionManager {
 		constructor(timeline: any);
-		get active(): boolean;
+		readonly active: boolean;
 		add(key: any, fromValue: any, toValue: any, settings: any): void;
 		remove(key: any): void;
 		update(): {};
@@ -1015,7 +1014,7 @@ declare module "@deck.gl/core/lifecycle/component" {
 	export default class Component<P> {
 		constructor();
 		clone(newProps: P): any;
-		get stats(): any;
+		readonly stats: any;
 		_initState(): void;
 
 		props: P;
@@ -1063,8 +1062,7 @@ declare module "@deck.gl/core/lib/layer-state" {
 			attributeManager: any;
 			layer: any;
 		});
-		get layer(): any;
-		set layer(layer: any);
+		layer: any;
 	}
 }
 declare module "@deck.gl/core/lib/layer" {
@@ -1155,7 +1153,7 @@ declare module "@deck.gl/core/lib/layer" {
 		getNeedsRedraw(opts?: { clearRedrawFlags: boolean }): boolean;
 		needsUpdate(): any;
 		hasUniformTransition(): any;
-		get isLoaded(): boolean;
+		readonly isLoaded: boolean;
 		isPickable(): any;
 		getModels(): any;
 		getAttributeManager(): any;
@@ -1254,8 +1252,8 @@ declare module "@deck.gl/core/lib/composite-layer" {
 		_subLayerProps?: Object;
 	}
 	export default class CompositeLayer<D> extends Layer<D> {
-		get isComposite(): boolean;
-		get isLoaded(): any;
+		readonly isComposite: boolean;
+		readonly isLoaded: any;
 		getSubLayers(): any;
 		initializeState(params?: any): void;
 		setState(updateObject: any): void;
@@ -1295,8 +1293,8 @@ declare module "@deck.gl/core/viewports/viewport" {
 		 * A new viewport instance should be created if any parameters have changed.
 		 */
 		constructor(opts?: {});
-		get metersPerPixel(): number;
-		get projectionMode(): number;
+		readonly metersPerPixel: number;
+		readonly projectionMode: number;
 		equals(viewport: any): any;
 		/**
 		 * Projects xyz (possibly latitude and longitude) to pixel coordinates in window
@@ -1557,7 +1555,7 @@ declare module "@deck.gl/core/viewports/web-mercator-viewport" {
 		 * A new viewport instance should be created if any parameters have changed.
 		 */
 		constructor(opts?: {});
-		get subViewports(): any;
+		readonly subViewports: any;
 		/**
 		 * Add a meter delta to a base lnglat coordinate, returning a new lnglat array
 		 *
@@ -1677,7 +1675,7 @@ declare module "@deck.gl/core/controllers/transition-manager" {
 declare module "@deck.gl/core/controllers/controller" {
 	export default class Controller {
 		constructor(ControllerState: any, options?: {});
-		set events(customEvents: any);
+		events(customEvents: any);
 		finalize(): void;
 		/**
 		 * Callback for events
@@ -1923,7 +1921,7 @@ declare module "@deck.gl/core/views/map-view" {
 	import View from "@deck.gl/core/views/view";
 	export default class MapView extends View {
 		constructor(props: any);
-		get controller(): any;
+		readonly controller: any;
 	}
 }
 declare module "@deck.gl/core/lib/effect-manager" {
@@ -2479,7 +2477,7 @@ declare module "@deck.gl/core/views/first-person-view" {
 	import View from "@deck.gl/core/views/view";
 	import Viewport from "@deck.gl/core/viewports/viewport";
 	export default class FirstPersonView extends View {
-		get controller(): any;
+		readonly controller: any;
 		_getViewport(props: any): Viewport;
 	}
 }
@@ -2648,7 +2646,7 @@ declare module "@deck.gl/core/views/orbit-view" {
 	}
 	export default class OrbitView extends View {
 		constructor(props: any);
-		get controller(): any;
+		readonly controller: any;
 	}
 }
 declare module "@deck.gl/core/controllers/orthographic-controller" {
@@ -2669,7 +2667,7 @@ declare module "@deck.gl/core/views/orthographic-view" {
 	import View from "@deck.gl/core/views/view";
 	export default class OrthographicView extends View {
 		constructor(props: any);
-		get controller(): any;
+		readonly controller: any;
 	}
 }
 declare module "@deck.gl/core/transitions/viewport-fly-to-interpolator" {

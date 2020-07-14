@@ -1,4 +1,4 @@
-//typings for @deck.gl/react v8.1.3
+//typings for @deck.gl/react v8.1.
 declare module "@deck.gl/react/utils/inherits-from" {
 	export function inheritsFrom(Type: any, ParentType: any): boolean;
 }
@@ -61,6 +61,8 @@ declare module "@deck.gl/react/utils/extract-styles" {
 declare module "@deck.gl/react/deckgl" {
 	import { DeckProps } from '@deck.gl/core/lib/deck';
 	type propsNowOptional = 'width'|'height'|'effects'|'layers';
+	
+	export type Omit<T, K extends keyof T> = Pick<T, ({ [P in keyof T]: P } & { [P in K]: never } )[keyof T]>;
 	export type DeckGLProps = Omit<DeckProps, propsNowOptional> & Partial<Pick<DeckProps, propsNowOptional>>;
 	import { ReactElement } from "react";
 	export default class DeckGL extends React.Component<DeckGLProps> {

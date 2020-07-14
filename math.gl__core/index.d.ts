@@ -61,7 +61,7 @@ declare module "@math.gl/core/classes/base/math-array" {
 		divideScalar(a: any): any;
 		clampScalar(min: any, max: any): this;
 		multiplyByScalar(scalar: any): any;
-		get elements(): this;
+		readonly elements: this;
 		check(): this;
 		validate(): boolean;
 	}
@@ -75,10 +75,8 @@ declare module "@math.gl/core/lib/validators" {
 declare module "@math.gl/core/classes/base/vector" {
 	import MathArray from "@math.gl/core/classes/base/math-array";
 	export default class Vector extends MathArray {
-		get x(): any;
-		set x(value: any);
-		get y(): any;
-		set y(value: any);
+		x: any;
+		y: any;
 		len(): number;
 		magnitude(): number;
 		lengthSquared(): number;
@@ -115,7 +113,7 @@ declare module "@math.gl/core/classes/vector2" {
 		copy(array: any): this;
 		fromObject(object: any): this;
 		toObject(object: any): any;
-		get ELEMENTS(): number;
+		readonly ELEMENTS: number;
 		horizontalAngle(): number;
 		verticalAngle(): number;
 		transform(matrix4: any): this;
@@ -134,9 +132,8 @@ declare module "@math.gl/core/classes/vector3" {
 		copy(array: any): this;
 		fromObject(object: any): this;
 		toObject(object: any): any;
-		get ELEMENTS(): number;
-		get z(): any;
-		set z(value: any);
+		readonly ELEMENTS: number;
+		z: any;
 		angle(vector: any): any;
 		cross(vector: any): this;
 		rotateX({ radians, origin }: { radians: any; origin?: number[] }): this;
@@ -158,11 +155,9 @@ declare module "@math.gl/core/classes/vector4" {
 		copy(array: any): this;
 		fromObject(object: any): this;
 		toObject(object: any): any;
-		get ELEMENTS(): number;
-		get z(): any;
-		set z(value: any);
-		get w(): any;
-		set w(value: any);
+		readonly ELEMENTS: number;
+		z: any;
+		w: any;
 		transform(matrix4: any): this;
 		transformByMatrix3(matrix3: any): this;
 		transformByMatrix2(matrix2: any): this;
@@ -184,11 +179,11 @@ declare module "@math.gl/core/classes/base/matrix" {
 declare module "@math.gl/core/classes/matrix3" {
 	import Matrix from "@math.gl/core/classes/base/matrix";
 	export default class Matrix3 extends Matrix {
-		static get IDENTITY(): any;
-		static get ZERO(): any;
-		get ELEMENTS(): number;
-		get RANK(): number;
-		get INDICES(): Readonly<{
+		static readonly IDENTITY: any;
+		static readonly ZERO: any;
+		readonly ELEMENTS: number;
+		readonly RANK: number;
+		readonly INDICES: Readonly<{
 			COL0ROW0: number;
 			COL0ROW1: number;
 			COL0ROW2: number;
@@ -242,9 +237,9 @@ declare module "@math.gl/core/classes/matrix3" {
 declare module "@math.gl/core/classes/matrix4" {
 	import Matrix from "@math.gl/core/classes/base/matrix";
 	export default class Matrix4 extends Matrix {
-		static get IDENTITY(): any;
-		static get ZERO(): any;
-		get INDICES(): Readonly<{
+		static readonly IDENTITY: any;
+		static readonly ZERO: any;
+		readonly INDICES: Readonly<{
 			COL0ROW0: number;
 			COL0ROW1: number;
 			COL0ROW2: number;
@@ -262,8 +257,8 @@ declare module "@math.gl/core/classes/matrix4" {
 			COL3ROW2: number;
 			COL3ROW3: number;
 		}>;
-		get ELEMENTS(): number;
-		get RANK(): number;
+		readonly ELEMENTS: number;
+		readonly RANK: number;
 		constructor(array: any);
 		copy(array: any): this;
 		set(
@@ -406,15 +401,11 @@ declare module "@math.gl/core/classes/quaternion" {
 		identity(): this;
 		fromAxisRotation(axis: any, rad: any): this;
 		setAxisAngle(axis: any, rad: any): this;
-		get ELEMENTS(): number;
-		get x(): any;
-		set x(value: any);
-		get y(): any;
-		set y(value: any);
-		get z(): any;
-		set z(value: any);
-		get w(): any;
-		set w(value: any);
+		readonly ELEMENTS: number;
+		x: any;
+		y: any;
+		z: any;
+		w: any;
 		len(): any;
 		lengthSquared(a: any): any;
 		dot(a: any, b: any): any;
@@ -507,15 +498,13 @@ declare module "@math.gl/core/classes/spherical-coordinates" {
 		}): string;
 		equals(other: any): any;
 		exactEquals(other: any): boolean;
-		get bearing(): number;
-		set bearing(v: number);
-		get pitch(): any;
-		set pitch(v: any);
-		get longitude(): any;
-		get latitude(): any;
-		get lng(): any;
-		get lat(): any;
-		get z(): number;
+		bearing: number;
+		pitch: any;
+		readonly longitude: any;
+		readonly latitude: any;
+		readonly lng: any;
+		readonly lat: any;
+		readonly z: number;
 		set(radius: any, phi: any, theta: any): this;
 		clone(): any;
 		copy(other: any): this;
@@ -530,17 +519,17 @@ declare module "@math.gl/core/classes/euler" {
 	import MathArray from "@math.gl/core/classes/base/math-array";
 	import Quaternion from "@math.gl/core/classes/quaternion";
 	export default class Euler extends MathArray {
-		static get ZYX(): number;
-		static get YXZ(): number;
-		static get XZY(): number;
-		static get ZXY(): number;
-		static get YZX(): number;
-		static get XYZ(): number;
-		static get RollPitchYaw(): number;
-		static get DefaultOrder(): number;
-		static get RotationOrders(): string[];
+		static readonly ZYX: number;
+		static readonly YXZ: number;
+		static readonly XZY: number;
+		static readonly ZXY: number;
+		static readonly YZX: number;
+		static readonly XYZ: number;
+		static readonly RollPitchYaw: number;
+		static readonly DefaultOrder: number;
+		static readonly RotationOrders: string[];
 		static rotationOrder(order: any): string;
-		get ELEMENTS(): number;
+		readonly ELEMENTS: number;
 		constructor(x?: number, y?: number, z?: number, order?: number);
 		fromQuaternion(quaternion: any): Euler;
 		copy(array: any): this;
@@ -549,32 +538,19 @@ declare module "@math.gl/core/classes/euler" {
 		toArray(array?: any[], offset?: number): any[];
 		toArray4(array?: any[], offset?: number): any[];
 		toVector3(result?: number[]): number[];
-		get x(): any;
-		set x(value: any);
-		get y(): any;
-		set y(value: any);
-		get z(): any;
-		set z(value: any);
-		get alpha(): any;
-		set alpha(value: any);
-		get beta(): any;
-		set beta(value: any);
-		get gamma(): any;
-		set gamma(value: any);
-		get phi(): any;
-		set phi(value: any);
-		get theta(): any;
-		set theta(value: any);
-		get psi(): any;
-		set psi(value: any);
-		get roll(): any;
-		set roll(value: any);
-		get pitch(): any;
-		set pitch(value: any);
-		get yaw(): any;
-		set yaw(value: any);
-		get order(): any;
-		set order(value: any);
+		x: any;
+		y: any;
+		z: any;
+		alpha: any;
+		beta: any;
+		gamma: any;
+		phi: any;
+		theta: any;
+		psi: any;
+		roll: any;
+		pitch: any;
+		yaw: any;
+		order: any;
 		fromVector3(v: any, order: any): this;
 		fromArray(array: any, offset?: number): this;
 		fromRollPitchYaw(roll: any, pitch: any, yaw: any): this;
@@ -615,18 +591,12 @@ declare module "@math.gl/core/classes/pose" {
 			position: any;
 			orientation: any;
 		});
-		get x(): any;
-		set x(value: any);
-		get y(): any;
-		set y(value: any);
-		get z(): any;
-		set z(value: any);
-		get roll(): any;
-		set roll(value: any);
-		get pitch(): any;
-		set pitch(value: any);
-		get yaw(): any;
-		set yaw(value: any);
+		x: any;
+		y: any;
+		z: any;
+		roll: any;
+		pitch: any;
+		yaw: any;
 		getPosition(): any;
 		getOrientation(): any;
 		equals(pose: any): any;

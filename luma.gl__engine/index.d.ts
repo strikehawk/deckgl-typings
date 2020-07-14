@@ -262,7 +262,7 @@ declare module "@luma.gl/engine/geometry/geometry" {
 		TRIANGLE_FAN: number;
 	};
 	export default class Geometry {
-		static get DRAW_MODE(): {
+		static readonly DRAW_MODE: {
 			POINTS: number;
 			LINES: number;
 			LINE_LOOP: number;
@@ -272,7 +272,7 @@ declare module "@luma.gl/engine/geometry/geometry" {
 			TRIANGLE_FAN: number;
 		};
 		constructor(props?: {});
-		get mode(): any;
+		readonly mode: any;
 		getVertexCount(): any;
 		getAttributes(): any;
 		_print(attributeName: any): string;

@@ -60,9 +60,9 @@ declare module "@deck.gl/geo-layers/tile-layer/tile-2d-header" {
 			onTileLoad: any;
 			onTileError: any;
 		});
-		get data(): any;
-		get isLoaded(): any;
-		get byteLength(): any;
+		readonly data: any;
+		readonly isLoaded: any;
+		readonly byteLength: any;
 		loadData(getTileData: any): void;
 	}
 }
@@ -128,9 +128,9 @@ declare module "@deck.gl/geo-layers/tile-layer/tileset-2d" {
 		 * Cache size defaults to 5 * number of tiles in the current viewport
 		 */
 		constructor(opts: any);
-		get tiles(): any;
-		get selectedTiles(): any;
-		get isLoaded(): any;
+		readonly tiles: any;
+		readonly selectedTiles: any;
+		readonly isLoaded: any;
 		setOptions(opts: any): void;
 		/**
 		 * Update the cache with the given viewport and triggers callback onUpdate.
@@ -243,7 +243,7 @@ declare module "@deck.gl/geo-layers/tile-layer/tile-layer" {
 	export default class TileLayer<D> extends CompositeLayer<D> {
 		constructor(props: TileLayerProps<D>);
 		initializeState(): void;
-		get isLoaded(): any;
+		readonly isLoaded: any;
 		shouldUpdateState({ changeFlags }: { changeFlags: any }): any;
 		updateState({
 			props,

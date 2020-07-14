@@ -139,7 +139,7 @@ declare module "@luma.gl/webgl/classes/resource" {
 	export default class Resource {
 		constructor(gl: any, opts?: {});
 		toString(): string;
-		get handle(): any;
+		readonly handle: any;
 		delete({ deleteChildren }?: { deleteChildren?: boolean }): this | void;
 		bind(funcOrHandle?: any): any;
 		unbind(): void;
@@ -198,8 +198,8 @@ declare module "@luma.gl/webgl/classes/accessor" {
 		static resolve(...accessors: any[]): Accessor;
 		constructor(...accessors: any[]);
 		toString(): string;
-		get BYTES_PER_ELEMENT(): number;
-		get BYTES_PER_VERTEX(): number;
+		readonly BYTES_PER_ELEMENT: number;
+		readonly BYTES_PER_VERTEX: number;
 		_assign(props?: {}): this;
 	}
 	export { DEFAULT_ACCESSOR_VALUES };
@@ -270,8 +270,8 @@ declare module "@luma.gl/webgl/classes/buffer" {
 		_createHandle(): any;
 		_deleteHandle(): void;
 		_getParameter(pname: any): any;
-		get type(): any;
-		get bytes(): any;
+		readonly type: any;
+		readonly bytes: any;
 		setByteLength(byteLength: any): boolean;
 		updateAccessor(opts: any): this;
 	}
@@ -817,13 +817,13 @@ declare module "@luma.gl/webgl/classes/framebuffer" {
 			}
 		): boolean;
 		static getDefaultFramebuffer(gl: any): any;
-		get MAX_COLOR_ATTACHMENTS(): any;
-		get MAX_DRAW_BUFFERS(): any;
+		readonly MAX_COLOR_ATTACHMENTS: any;
+		readonly MAX_DRAW_BUFFERS: any;
 		constructor(gl: any, opts?: {});
-		get color(): any;
-		get texture(): any;
-		get depth(): any;
-		get stencil(): any;
+		readonly color: any;
+		readonly texture: any;
+		readonly depth: any;
+		readonly stencil: any;
 		initialize({
 			width,
 			height,
@@ -1224,7 +1224,7 @@ declare module "@luma.gl/webgl/classes/vertex-array-object" {
 		static setConstant(gl: any, location: any, array: any): void;
 		constructor(gl: any, opts?: {});
 		delete(): void;
-		get MAX_ATTRIBUTES(): any;
+		readonly MAX_ATTRIBUTES: any;
 		initialize(props?: {}): this;
 		setProps(props: any): this;
 		setElementBuffer(elementBuffer?: any, opts?: {}): this;
