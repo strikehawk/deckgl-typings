@@ -40,7 +40,7 @@ declare module "@deck.gl/mapbox/mapbox-layer" {
 		props: MapboxLayerProps<D>;
 
 		onAdd(map: any, gl: any): void;
-		onRemove(): void;
+		onRemove(map: any, gl: any): void;
 		setProps(props: any): void;
 		render(gl: any, matrix: any): void;
 	}
